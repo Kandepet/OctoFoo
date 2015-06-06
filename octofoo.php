@@ -1439,7 +1439,7 @@ namespace OctoFoo\Utils
       chdir($wd);
       exec('git config core.autocrlf false');
       foreach ($commands as $cmd) {
-         //printf("> git %s\n", $cmd);
+         printf("> git %s\n", $cmd);
          exec(sprintf('git %s', $cmd));
       }
       chdir($cwd);
