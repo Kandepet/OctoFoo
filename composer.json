@@ -1,0 +1,36 @@
+{
+  "name": "HackerLabs/octofoo",
+  "description": "Octofoo is a light and easy static website generator written in PHP. Original code from PHPoole (Arnaud Ligny).",
+  "type": "project",
+  "keywords": [
+    "website", "static", "generator"
+  ],
+  "license": "MIT",
+  "homepage": "http://hackerlabs.github.com/OctoFoo",
+  "authors": [
+    {
+      "name": "Deepak Kandepet",
+      "email": "deepak@hackerlabs.org",
+      "homepage": "http://hackerlabs.org",
+      "role": "Developer"
+    },
+    {
+      "name": "Arnaud Ligny",
+      "email": "arnaud@ligny.org",
+      "homepage": "http://narno.org",
+      "role": "Developer"
+    }
+  ],
+  "bin": [
+      "octofoo.php"
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php":">=5.4",
+    "zendframework/zend-console": "2.*",
+    "zendframework/zend-eventmanager": "2.*",
+    "twig/twig": "1.*",
+    "michelf/php-markdown": "1.*"
+  }
+}
