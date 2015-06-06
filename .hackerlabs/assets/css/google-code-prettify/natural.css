@@ -1,0 +1,49 @@
+pre.prettyprint, code.prettyprint {
+  background: #f9f9f9;
+  color: #dddddd;
+  font-family: Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px; }
+
+pre .pln, code .pln {
+  color: #4d4d4c; }
+
+pre .kwd, code .kwd, pre .typ, code .typ, pre .tag, code .tag {
+  font-weight: bold; }
+
+pre .com, code .com {
+  font-style: italic; }
+
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+@media screen {
+  pre .str, code .str {
+    color: #718c00; }
+  pre .kwd, code .kwd {
+    color: #8959a8; }
+  pre .com, code .com {
+    color: #8e908c; }
+  pre .typ, code .typ {
+    color: #4271ae; }
+  pre .lit, code .lit {
+    color: #f5871f; }
+  pre .pun, code .pun, pre .opn, code .opn, pre .clo, code .clo {
+    color: #4d4d4c; }
+  pre .tag, code .tag {
+    color: #c82829; }
+  pre .atn, code .atn {
+    color: #f5871f; }
+  pre .atv, code .atv {
+    color: #3e999f; }
+  pre .dec, code .dec {
+    color: #f5871f; }
+  pre .var, code .var {
+    color: #c82829; }
+  pre .fun, code .fun {
+    color: #4271ae; } }
+
+
+/*# sourceMappingURL=maps/prettify-natural.css.map */

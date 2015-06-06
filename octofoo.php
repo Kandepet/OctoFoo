@@ -151,7 +151,7 @@ namespace
       try {
          $config = $octofoo->getConfig();
          if (!isset($config['deploy']['repository']) && !isset($config['deploy']['branch'])) {
-            throw new \Exception('Cannot found the repository name in the config file');
+            throw new \Exception('Cannot find the repository name in the config file');
          }
          else {
             $repoUrl = $config['deploy']['repository'];
@@ -160,16 +160,39 @@ namespace
          $deployDir = $octofoo->getWebsitePath() . '/../.' . basename($octofoo->getWebsitePath());
          if (is_dir($deployDir)) {
             //echo 'Deploying files to GitHub...' . PHP_EOL;
-            $deployIterator = new FilesystemIterator($deployDir);
-            foreach ($deployIterator as $deployFile) {
-               if ($deployFile->isFile()) {
-                  @unlink($deployFile->getPathname());
-               }
-               if ($deployFile->isDir() && $deployFile->getFilename() != '.git') {
-                  OctoFoo\Utils\RecursiveRmDir($deployFile->getPathname());
+
+            $it = new RecursiveDirectoryIterator($deployDir, RecursiveDirectoryIterator::SKIP_DOTS);
+            $files = new RecursiveIteratorIterator($it,
+               RecursiveIteratorIterator::CHILD_FIRST);
+            foreach($files as $file) {
+               //echo "Deleting: " . $file->getRealPath() . "\n";
+               if ($file->isDir()){
+                  @rmdir($file->getRealPath());
+               } else {
+                  @unlink($file->getRealPath());
                }
             }
-            OctoFoo\Utils\RecursiveCopy($octofoo->getWebsitePath(), $deployDir);
+
+
+            /*$deployFileIterator = new FilesystemIterator($deployDir);
+            foreach ($deployFileIterator as $deployFile) {
+               if ($deployFile->isFile()) {
+                  echo "Deleting File: $deployFile\n";
+                  @unlink($deployFile->getPathname());
+               }
+            }
+            sleep(2);
+            $deployDirIterator = new FilesystemIterator($deployDir);
+            foreach ($deployDirIterator as $deployDir) {
+               if ($deployDir->isDir() && $deployDir->getFilename() != '.git') {
+                  echo "Deleting Dir: $deployDir\n";
+                  OctoFoo\Utils\RecursiveRmDir($deployDir->getPathname());
+               }
+            }
+            sleep(2);
+             */
+
+            OctoFoo\Utils\RecursiveCopy($octofoo->getWebsitePath() . '/_octofoo_static_site' , $deployDir);
             $updateRepoCmd = array(
                'add -A',
                'commit -m "Update ' . $repoBranch . ' via OctoFoo"',
@@ -180,7 +203,7 @@ namespace
          else {
             //echo 'Setting up GitHub deployment...' . PHP_EOL;
             @mkdir($deployDir);
-            OctoFoo\Utils\RecursiveCopy($octofoo->getWebsitePath(), $deployDir);
+            OctoFoo\Utils\RecursiveCopy($octofoo->getWebsitePath() . '/_octofoo_static_site', $deployDir);
             $initRepoCmd = array(
                'init',
                'add -A',
@@ -1393,9 +1416,11 @@ namespace OctoFoo\Utils
       );
       foreach ($iterator as $item) {
          if ($item->isDir()) {
+            //echo "MKDIR: " . $dest . DS . $iterator->getSubPathName() . "\n";
             @mkdir($dest . DS . $iterator->getSubPathName());
          }
          else {
+            //echo "COPY $item\n";
             @copy($item, $dest . DS . $iterator->getSubPathName());
          }
       }
