@@ -166,8 +166,13 @@ namespace
             $files = new RecursiveIteratorIterator($it,
                RecursiveIteratorIterator::CHILD_FIRST);
             foreach($files as $file) {
+               if(($pos = strpos($file->getRealPath(), '.git')) !== false) {
+                  //echo "Skipping POS: $pos" . $file->getRealPath() . "\n";
+                  continue;
+               }
+
                //echo "Deleting: " . $file->getRealPath() . "\n";
-               if ($file->isDir() && $file->getFilename() != '.git'){
+               if ($file->isDir()){
                   @rmdir($file->getRealPath());
                } else {
                   @unlink($file->getRealPath());
