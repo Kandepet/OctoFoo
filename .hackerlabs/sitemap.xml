@@ -31,11 +31,6 @@
   <lastmod>2011-06-16</lastmod>
  </url>
  <url>
-  <loc>http://hackernode.com:8000/example.html</loc>
-  <priority>1.0</priority>
-  <changefreq>weekly</changefreq>
- </url>
- <url>
   <loc>http://hackernode.com:8000/index.html</loc>
   <priority>1.0</priority>
   <changefreq>weekly</changefreq>

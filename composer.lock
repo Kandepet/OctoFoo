@@ -4,8 +4,87 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "13286635b79baaf50806a799347d945f",
+    "hash": "f0321cd90b51d9edf5d0014c12430173",
     "packages": [
+        {
+            "name": "mibe/feedwriter",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mibe/FeedWriter.git",
+                "reference": "27bcd2b240f1693b8bce639bbc2ed3694a4b2bc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mibe/FeedWriter/zipball/27bcd2b240f1693b8bce639bbc2ed3694a4b2bc5",
+                "reference": "27bcd2b240f1693b8bce639bbc2ed3694a4b2bc5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "ATOM.php",
+                    "Feed.php",
+                    "Item.php",
+                    "RSS1.php",
+                    "RSS2.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Anis uddin Ahmad"
+                },
+                {
+                    "name": "Michael Bemmerl",
+                    "email": "mail@mx-server.de"
+                },
+                {
+                    "name": "Phil Freo"
+                },
+                {
+                    "name": "Paul Ferrett"
+                },
+                {
+                    "name": "Brennen Bearnes"
+                },
+                {
+                    "name": "Michael Robinson",
+                    "email": "mike@pagesofinterest.net"
+                },
+                {
+                    "name": "Baptiste Fontaine"
+                },
+                {
+                    "name": "Kristián Valentín"
+                },
+                {
+                    "name": "Brandtley McMinn"
+                },
+                {
+                    "name": "Julian Bogdani"
+                }
+            ],
+            "description": "Generate feeds in either RSS 1.0, RSS 2.0 or ATOM formats",
+            "homepage": "https://github.com/mibe/FeedWriter",
+            "keywords": [
+                "atom",
+                "feed",
+                "rss"
+            ],
+            "time": "2015-01-22 23:18:41"
+        },
         {
             "name": "michelf/php-markdown",
             "version": "1.5.0",
@@ -59,16 +138,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.18.1",
+            "version": "v1.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f"
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9f70492f44398e276d1b81c1b43adfe6751c7b7f",
-                "reference": "9f70492f44398e276d1b81c1b43adfe6751c7b7f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e8e6575abf6102af53ec283f7f14b89e304fa602",
+                "reference": "e8e6575abf6102af53ec283f7f14b89e304fa602",
                 "shasum": ""
             },
             "require": {
@@ -112,30 +191,32 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-04-19 08:30:27"
+            "time": "2015-06-06 23:31:24"
         },
         {
             "name": "zendframework/zend-console",
-            "version": "2.4.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-console.git",
-                "reference": "92f9c51bdc42332e63914eec892364594a9b68c8"
+                "reference": "ad425c45444a76d6559df45df14291940c6883f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-console/zipball/92f9c51bdc42332e63914eec892364594a9b68c8",
-                "reference": "92f9c51bdc42332e63914eec892364594a9b68c8",
+                "url": "https://api.github.com/repos/zendframework/zend-console/zipball/ad425c45444a76d6559df45df14291940c6883f1",
+                "reference": "ad425c45444a76d6559df45df14291940c6883f1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.23",
-                "zendframework/zend-stdlib": "self.version"
+                "zendframework/zend-stdlib": "~2.5"
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master"
+                "zendframework/zend-filter": "~2.5",
+                "zendframework/zend-json": "~2.5",
+                "zendframework/zend-validator": "~2.5"
             },
             "suggest": {
                 "zendframework/zend-filter": "To support DefaultRouteMatcher usage",
@@ -144,8 +225,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev",
-                    "dev-develop": "2.5-dev"
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
                 }
             },
             "autoload": {
@@ -162,36 +243,35 @@
                 "console",
                 "zf2"
             ],
-            "time": "2015-05-07 14:55:31"
+            "time": "2015-06-03 15:32:00"
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "2.4.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "c2c46a7a2809b74ceb66fd79f66d43f97e1747b4"
+                "reference": "d94a16039144936f107f906896349900fd634443"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/c2c46a7a2809b74ceb66fd79f66d43f97e1747b4",
-                "reference": "c2c46a7a2809b74ceb66fd79f66d43f97e1747b4",
+                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/d94a16039144936f107f906896349900fd634443",
+                "reference": "d94a16039144936f107f906896349900fd634443",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.23",
-                "zendframework/zend-stdlib": "self.version"
+                "zendframework/zend-stdlib": "~2.5"
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master"
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev",
-                    "dev-develop": "2.5-dev"
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
                 }
             },
             "autoload": {
@@ -203,25 +283,25 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "homepage": "https://github.com/zendframework/zend-event-manager",
+            "homepage": "https://github.com/zendframework/zend-eventmanager",
             "keywords": [
                 "eventmanager",
                 "zf2"
             ],
-            "time": "2015-05-07 14:55:31"
+            "time": "2015-06-03 15:32:01"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.4.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "a5dd7fd2ba6e8f6c6ea5a12db0605d3aa48af1e7"
+                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/a5dd7fd2ba6e8f6c6ea5a12db0605d3aa48af1e7",
-                "reference": "a5dd7fd2ba6e8f6c6ea5a12db0605d3aa48af1e7",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cc8e90a60dd5d44b9730b77d07b97550091da1ae",
+                "reference": "cc8e90a60dd5d44b9730b77d07b97550091da1ae",
                 "shasum": ""
             },
             "require": {
@@ -230,11 +310,12 @@
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
                 "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "dev-master",
-                "zendframework/zend-eventmanager": "self.version",
-                "zendframework/zend-filter": "self.version",
-                "zendframework/zend-serializer": "self.version",
-                "zendframework/zend-servicemanager": "self.version"
+                "zendframework/zend-config": "~2.5",
+                "zendframework/zend-eventmanager": "~2.5",
+                "zendframework/zend-filter": "~2.5",
+                "zendframework/zend-inputfilter": "~2.5",
+                "zendframework/zend-serializer": "~2.5",
+                "zendframework/zend-servicemanager": "~2.5"
             },
             "suggest": {
                 "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
@@ -245,8 +326,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev",
-                    "dev-develop": "2.5-dev"
+                    "dev-master": "2.5-dev",
+                    "dev-develop": "2.6-dev"
                 }
             },
             "autoload": {
@@ -263,7 +344,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2015-05-07 14:55:31"
+            "time": "2015-06-03 15:32:03"
         }
     ],
     "packages-dev": [],

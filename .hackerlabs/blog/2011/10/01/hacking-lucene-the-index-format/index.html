@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
-      <title>Hacker Labs</title>
+      <title>Hacker Labs | Hacking Lucene - The Index format</title>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="description" content="Understand the basics of search engine indexing and inverted indexes. Delve deep into the internals of Lucene 3.4 Index and how it helps with full text searches. Get intimate with Index building and using inverted index to execute search queries.">
+      <meta name="keywords" content="open source search, Lucene internals, Lucene index, Lucene search, Deepak Kandepet, kandepet">
+      <meta name="robots" content="index,follow">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <link rel="shortcut icon" href="/assets/img/favicon.png" />
-      <link rel="alternate" type="application/rss+xml" title="Hacker Labs RSS Feed" href="http://hackerlabs.org/feed/" />
-      <!--<script type="text/javascript">var url = 'http://themes.serifly.com/timeline-wp/wp-content/themes/timeline';</script>-->
+      <link rel="alternate" type="application/rss+xml" title="Hacker Labs RSS Feed" href="http://hackerlabs.org/rss.xml" />
       <link rel='stylesheet' id='hackerlabs-css'  href='/assets/css/style.css' type='text/css' media='all' />
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
       <script type='text/javascript' src='/assets/js/jquery.js'></script>
@@ -23,6 +25,20 @@
          body { background-color: #fafafa; }
          #footer { background-color: #fafafa; -webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.02); -moz-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.02); box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.02); }
       </style>
+
+      <script type="text/javascript">
+         var _gaq = _gaq || [];
+         _gaq.push(['_setAccount', 'UA-31236795-1']);
+         _gaq.push(['_trackPageview']);
+
+         (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+      </script>
+
+
    </head>
 
    <body>
@@ -47,7 +63,7 @@
                   </form>
                </div>
                               <ul class="social">
-                  <li><a href="mailto:deepak@kandepet.com"><i class="fa fa-envelope"></i></a></li>
+                  <li><a href="mailto:deepak@hackerlabs.org"><i class="fa fa-envelope"></i></a></li>
                   <li><a href="http://twitter.com/HackerLabs"><i class="fa fa-twitter"></i></a></li>
                   <li><a href="https://www.facebook.com/pages/HackerLabs/925132850884663"><i class="fa fa-facebook"></i></a></li>
                   <li><a href="https://www.linkedin.com/in/deepakkandepet"><i class="fa fa-linkedin"></i></a></li>
@@ -228,7 +244,31 @@
                                                    </ul>
                         <div class="clearfix">
                         </div>
-                     </div>
+
+                                                <comments>
+                        <p class="break"></p>
+
+                        <h1> Comments </h1>
+
+                        <div id="disqus_thread" aria-live="polite">
+                           <script type="text/javascript">
+                              var disqus_shortname = 'hackerlabs';
+
+
+                              var disqus_developer = 1;
+                              var disqus_identifier = 'http://HackerLabs.github.com/blog/2011/10/01/hacking-lucene-the-index-format/';
+                              var disqus_url = 'http://HackerLabs.github.com/blog/2011/10/01/hacking-lucene-the-index-format/';
+                              var disqus_script = 'embed.js';
+
+                              (function () {
+                                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+                                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                              }());
+                           </script>
+                        </div>
+                        </comment>
+                                             </div>
                   </div>
                </div>
 

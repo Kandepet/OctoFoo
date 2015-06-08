@@ -31,6 +31,7 @@
     "zendframework/zend-console": "2.*",
     "zendframework/zend-eventmanager": "2.*",
     "twig/twig": "1.*",
-    "michelf/php-markdown": "1.*"
+    "michelf/php-markdown": "1.*",
+    "mibe/feedwriter": "1.*"
   }
 }

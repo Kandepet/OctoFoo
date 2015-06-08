@@ -18,6 +18,7 @@ namespace
    use Zend\Console\Console as Console;
    use Zend\Console\Getopt;
    use Zend\Console\Exception\RuntimeException as ConsoleException;
+   use \FeedWriter\RSS2;
 
    // Composer autoloading
    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
@@ -166,7 +167,7 @@ namespace
                RecursiveIteratorIterator::CHILD_FIRST);
             foreach($files as $file) {
                //echo "Deleting: " . $file->getRealPath() . "\n";
-               if ($file->isDir()){
+               if ($file->isDir() && $file->getFilename() != '.git'){
                   @rmdir($file->getRealPath());
                } else {
                   @unlink($file->getRealPath());
@@ -285,6 +286,8 @@ namespace OctoFoo
       protected $_menu = array();
       public $localServe = false;
       protected $_processor;
+      protected $_sitemap;
+      protected $_feeds;
 
       public function __construct($websitePath)
       {
@@ -302,6 +305,14 @@ namespace OctoFoo
 
          // load sitemap generator
          $this->_sitemap = new Sitemap('http://hackernode.com:8000');
+
+         $this->_feeds = new \FeedWriter\RSS2;
+         $this->_feeds->setTitle('HackerLabs - A blog by Deepak Kandepet');
+         $this->_feeds->setLink('http://hackerlabs.org/feed/');
+         $this->_feeds->setDescription('Links and Articles from HackerLabs.org, A blog by Deepak Kandepet.');
+         $this->_feeds->setChannelElement('language', 'en-US');
+         $this->_feeds->setDate(date(DATE_RSS, time()));
+         $this->_feeds->setChannelElement('pubDate', date(\DATE_RSS, strtotime('2011-06-16')));
       }
 
       public function getWebsiteFileInfo()
@@ -425,6 +436,15 @@ EOT;
             throw new \Exception('Cannot create the router file');
          }
          return 'Router file created';
+      }
+
+      private function createFeedFile()
+      {
+         $content = $this->_feeds->generateFeed();
+         if (!@file_put_contents($this->getWebsitePath() . '/' . self::OUTPUT_DIRNAME . '/rss.xml', $content)) {
+            throw new \Exception('Cannot create the router file');
+         }
+         return 'Feed file created';
       }
 
       private function createRobotsTxt()
@@ -652,6 +672,7 @@ EOT;
                'nav'      => (isset($menuNav) ? $menuNav : ''),
                'previous' => (isset($previous) ? array('path' => $previous, 'title' => $prevTitle) : ''),
                'next'     => (isset($next) ? array('path' => $next, 'title' => $nextTitle) : ''),
+               'comment_url' => $page['path'] . '/'
             );
             $tplVariables = array(
                'octofoo' => array(
@@ -661,7 +682,7 @@ EOT;
                'site' => new Proxy($this),
                'asset_path' => $this->getConfig()['site']['base_url'] . $this->getConfig()['site']['base_path'] . '/assets',
                'page' => array_merge($page, $pageExtra),
-               'pages' => $pages
+               'pages' => $pages,
             );
             // rendering
             $rendered = $tplEngine->render($page['template'], $tplVariables);
@@ -714,6 +735,18 @@ EOT;
             // Add current file to sitemap
             $this->_sitemap->addItem($sitemap_file_path, '1.0', 'weekly', $pagesIterator->current()['postdate']);
 
+            // Add the curret file to the RSS feed
+            // Also, we only generate feeds for pages that request it.
+            if($page['rss']) {
+               $newItem = $this->_feeds->createNewItem();
+               $newItem->setTitle($page['title']);
+               $newItem->setLink('http://hackerlabs.org/' . $page['path']);
+               $newItem->setDescription($page['description']);
+               $newItem->setDate($page['postdate']);
+
+               $this->_feeds->addItem($newItem);
+            }
+
             // use by the next iteration
             $prevPos = $pagesIterator->key();
             $currentPos++;
@@ -728,6 +761,11 @@ EOT;
          // Write the robots.txt
          $this->createRobotsTxt();
          $this->addMessage("Creating robots.txt");
+
+         // Write the robots.txt
+         $this->createFeedFile();
+         $this->addMessage("Creating rss.xml");
+
 
          // Copy assets
          if (is_dir($this->getWebsitePath() . '/' . self::OUTPUT_DIRNAME . '/' . self::ASSETS_DIRNAME)) {
